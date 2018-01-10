@@ -22,32 +22,25 @@
 
   <body>
 
-    <header class="fkkev-header">
-     <nav class="navbar navbar-default hidden-sm hidden-md hidden-lg">
-      <ul class="nav nav-tabs nav-justified">
-         <li class="active">
-           <a href="#">
-             <i class="icon ion-ios-lightbulb padding-r7 icon-lamp-active"></i>
-             Aktuelles
-           </a>
+    <div ">
+     <nav class="navbar fixed-bottom navbar-default hidden-sm hidden-md hidden-lg">
+      <ul class="nav nav-tabs nav-fill nav-justified">
+         <li class="nav-item active">
+           <a class="nav-link" href="#"><i class="icon ion-ios-lightbulb padding-r7 icon-lamp-active"></i>Aktuelles</a>    
          </li>
          <li>
-           <a href="#">
-             Wissen 
-           </a>
+           <a class="nav-link" href="#">Wissen</a>
          </li>
-         <li>
-           <a href="#">
-             Mitglied werden 
-           </a>
+         <li class="nav-item" >
+           <a class="nav-link" href="#">Mitglied werden</a>
          </li>
-         <li>
-           <a href="#">
+         <li class="nav-item">
+           <a class="nav-link disabled" href="#">
              Streuobst
            </a>
          </li>
-         <li>
-           <a href="#">
+         <li class="nav-item">
+           <a class="nav-link" href="#">
              Verein
            </a>
          </li>
@@ -55,7 +48,7 @@
 
       </ul>
      </nav>
-    </header>
+    </div>
     <div class="content">
 		<div class="contact-clean">
 			<form method="post">
@@ -63,6 +56,13 @@
 				<div class="btn-group" role="group" aria-label="Basic example">
 				  <button type="button" class="btn btn-secondary">ordentliches Mitglied</button>
 				  <button type="button" class="btn btn-secondary">Fördermitglied</button>
+				</div>
+				<div class="input-group">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="">Vor- und Nachname</span>
+				  </div>
+				  <input type="text" class="form-control">
+				  <input type="text" class="form-control">
 				</div>
 				<div class="form-group"><input class="form-control" type="text" name="firstname" placeholder="Vorname"></div>
 				<div class="form-group"><input class="form-control" type="text" name="lastname" placeholder="Nachname"></div>
