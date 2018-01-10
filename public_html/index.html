@@ -60,11 +60,14 @@
 		<div class="contact-clean">
 			<form method="post">
 				<h2 class="text-center">Mitglied werden</h2>
-				<div class="btn-group btn-group-sm btn-group-justified" role="group"><a class="btn btn-default" role="button" href="#" style="font-size:9px;">ordentliches Mitglied</a><a class="btn btn-default" role="button" href="#" style="font-size:9px;">Fördermitglied</a></div>
-				<div class="form-group has-success"><input class="form-control" type="text" name="firstname" placeholder="Vorname"></div>
-				<div class="form-group has-success"><input class="form-control" type="text" name="lastname" placeholder="Nachname"></div>
-				<div class="form-group has-error"><input class="form-control" type="email" name="email" required="" placeholder="E-Mail" inputmode="email"></div>
-				<div class="form-group has-error"><input class="form-control" type="date" name="birthday"></div>
+				<div class="btn-group" role="group" aria-label="Basic example">
+				  <button type="button" class="btn btn-secondary">ordentliches Mitglied</button>
+				  <button type="button" class="btn btn-secondary">Fördermitglied</button>
+				</div>
+				<div class="form-group"><input class="form-control" type="text" name="firstname" placeholder="Vorname"></div>
+				<div class="form-group"><input class="form-control" type="text" name="lastname" placeholder="Nachname"></div>
+				<div class="form-group"><input class="form-control" type="email" name="email" required="" placeholder="E-Mail" inputmode="email"></div>
+				<div class="form-group"><input class="form-control" type="date" name="birthday"></div>
 				<div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
 			</form>
 		</div>
