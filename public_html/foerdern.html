@@ -1,62 +1,8 @@
-<!DOCTYPE html>
-<html style="height:100%;">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frankfurter Kelterei Kultur e.V.</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
-    <link rel="stylesheet" href="assets/css/Basic-Site.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-	
-</head>
+{% block content %}
 
-<body style="background-color:rgb(247,255,244);height:100%;">
-
-	<!-- Page wrapper-->
-    <div class="container" id="pagewrapper">
-	
-		<!-- Header-->
-        <div class="page-header hidden-xs hidden-sm" id="logo-head">
-            <h1 class="text-nowrap text-center" style="font-size:48px;margin:0;color:rgb(0,0,0);">Frankfurter Kelterei Kultur e.V.</h1>
-        </div>
-		<!-- Menu-->
-        <div style="background-color:#1fb0e3;">
-			<!-- Menu - fix -->
-            <div class="hidden-xs navbar-inverse affix-top" id="affix-width" data-spy="affix" data-offset-top="43">
-                <div class="row" style="background-color:#cdcccc;margin:0;">
-                    <div class="col-md-12 col-sm-12" style="padding:0;">
-                        <ul class="nav nav-pills nav-justified">
-                            <li {% if request.endpoint == 'home' %}><a href="{{ url_for('home') }}" style="padding:5px 0;">Aktuelles</a></li>
-                            <li class="disabled"><a href="#" style="padding:5px 0;">Wissen</a></li>
-                            <li {% if request.endpoint == 'foerdern' %}><a href="{{ url_for('foerdern') }}" style="padding:5px 50px;">Mitglied werden</a></li>
-                            <li class="disabled"><a href="#" style="padding:5px 0;">Bäume</a></li>
-                            <li {% if request.endpoint == 'aboutus' %}><a href="{{ url_for('aboutus') }}" style="padding:5px 0;">Verein</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-			<!-- Menu - mobile -->
-            <nav class="navbar navbar-default hidden-sm hidden-md hidden-lg">
-                <div class="container-fluid">
-                    <div class="navbar-header"><a class="navbar-brand" href="#">FraKeKu e.V.</a><button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-                    <div
-                        class="collapse navbar-collapse" id="navcol-2">
-                        <ul class="nav navbar-nav" style="background-color:#f5df51;">
-                            <li {% if request.endpoint == 'home' %} role="presentation"><a href="{{ url_for('home') }}">Aktuelles</a></li>
-                            <li {% if request.endpoint == 'foerdern' %} role="presentation"><a href="{{ url_for('foerdern') }}">Mitglied werden</a></li>
-                            <li {% if request.endpoint == 'aboutus' %} role="presentation"><a href="{{ url_for('aboutus') }}">Verein</a></li>
-                        </ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	
-	<!-- CONTENTROW-->
-    <div id="contentrow" class="row" >
-			<div class="row" style="margin:0; padding:5px 0;">
+	<div class="row" style="margin:0; padding:5px 0;">
         <div class="col-md-8 col-md-offset-2">
             <!-- 1 / 4 -->
 			<h3>Jetzt Mitglied werden!</h3>
@@ -231,7 +177,13 @@
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable Text area</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-							  <textarea readonly="readonly" stype="font-size: 8px;" rows="5" class="resizeable-textarea form-control" placeholder="">Ich ermächtige den Frankfurter Kelterei Kultur e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut an, die vom Frankfurter Kelterei Kultur e.V. auf mein Konto gezogenen Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belastenden Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.&#10;&#10;Frankfurter Kelterei Kultur e.V. &#10;&#10;Gläubiger-Identifikationsnummer und Mandatsreferenz werden separat mitgeteilt.</textarea>
+							  <textarea readonly="readonly" stype="font-size: 8px;" rows="5" class="resizeable-textarea form-control" placeholder="">Ich ermächtige den Frankfurter Kelterei Kultur e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut an, die vom Frankfurter Kelterei Kultur e.V. auf mein Konto gezogenen Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belastenden Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+
+Frankfurter Kelterei Kultur e.V.
+Gläubiger-Identifikationsnummer: DE123456789
+
+Die Mandatsreferenz wird separat mitgeteilt.
+</textarea>
 							</div>
 						  </div>
 						
@@ -244,22 +196,5 @@
 			
         </div>
 </div>
-	</div>
-	
-	
-	<!-- footer -->
-	<div class="row" id="footer" style="margin:0;padding:5px 0;"> 
-		{% block footer %}{% endblock %}
-	</div>
-	
-	
-    </div><!-- /container -->
-	<script src="assets/js/iban.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	
-	
-	
-</body>
 
-</html>
+{% endblock %}

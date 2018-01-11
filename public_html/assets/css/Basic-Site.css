@@ -1,0 +1,136 @@
+a {
+  color:#8e888a;
+  text-decoration:none;
+  outline:none;
+}
+
+a:hover, a:focus {
+  color:#a7a0a2;
+}
+
+@media (max-width:767px) {
+  a {
+    font-size:25px;
+  }
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background:none;
+  text-decoration:none;
+  border-bottom-color:#3dc56a;
+  color:#3dc56a;
+  transition:border,color .50s;
+  font-weight:400;
+}
+
+li.active {
+  background:transparent;
+  border-bottom:1px solid #74e99b;
+}
+
+.nav > li > a {
+  font-family:'Roboto';
+  font-weight:300;
+  padding:5px 60px;
+  color:#767575;
+  transition:background .50s;
+  background:none;
+  border:0px;
+  border-radius:0px;
+  transition:border,color .50s;
+}
+
+h1 {
+  font-family:'Josefin Sans';
+  font-weight:100;
+  font-size:70px;
+  color:#fff;
+}
+
+@media (max-width:767px) {
+  h1 {
+    font-size:40px;
+    font-weight:300;
+    color:#fff;
+    text-align:center;
+  }
+
+}
+
+.navbar {
+  position:relative;
+  min-height:50px;
+  margin-bottom:0px;
+  border:1px solid #cdcccc;
+  border-right:none;
+  border-left:none;
+  border-radius:0px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .open > a {
+  background-image:none;
+  background-color:#1fb0e3;
+  color:#fff;
+  box-shadow:none;
+  text-shadow:none;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+  color:#fff;
+  background-color:#1fb0e3;
+}
+
+@media (max-width:414px) {
+  .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float:left;
+  }
+}
+
+h1 {
+  font-family:'Josefin Sans';
+  font-weight:100;
+  font-size:120px;
+  color:#fdffff;
+}
+
+@media (max-width:767px) {
+  h1 {
+    font-size:60px;
+    font-weight:300;
+    color:#fff;
+    text-align:center;
+  }
+}
+
+
+.ln_solid {
+    border-top: 1px solid #e5e5e5;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.affix{
+	top: 0;
+    z-index: 9999 !important;
+
+}
+
+@media (min-width: 768px){
+	#affix-width {
+    width: 750px;
+	}
+}
+
+
+@media (min-width: 992px){
+	#affix-width {
+    width: 970px;
+	}
+}
+
+@media (min-width: 1200px){
+	#affix-width {
+	width: 1170px;}
+}

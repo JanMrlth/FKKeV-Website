@@ -1,0 +1,24 @@
+body {
+  background-image:url("../../assets/img/streuobstwiese.jpg");
+  height: 100%;
+}
+
+#pagewrapper{
+	background-color:rgba(255,255,255,0.9);
+	padding:0;
+	min-height:100%;
+}
+
+#logo-head{
+ height:60px;
+ width:100%;
+ padding:8px;
+ margin:0;"
+}
+
+#contentrow {
+	height:100%;
+	margin:0;
+	padding:5px 0;
+	background-color: rgba(255,255,255,0.9);
+}
