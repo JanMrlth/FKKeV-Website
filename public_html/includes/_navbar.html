@@ -1,0 +1,34 @@
+
+{##############################################}
+{# This file provides the MENU of the webpage #}
+{##############################################}
+
+
+<div style="background-color:#1fb0e3;">
+	<div class="hidden-xs">
+		<div class="row" style="background-color:#cdcccc;margin:0;">
+			<div class="col-md-12 col-sm-12" style="padding:0;">
+				<ul class="nav nav-pills nav-justified">
+					<li {% if request.endpoint == 'home' %}><a href="{{ url_for('home') }}" style="padding:5px 0;">Aktuelles</a></li>
+					<li class="disabled"><a href="#" style="padding:5px 0;">Wissen</a></li>
+					<li {% if request.endpoint == 'foerdern' %}><a href="{{ url_for('foerdern') }}" style="padding:5px 50px;">Mitglied werden</a></li>
+					<li class="disabled"><a href="#" style="padding:5px 0;">Bäume</a></li>
+					<li {% if request.endpoint == 'aboutus' %}><a href="{{ url_for('aboutus') }}" style="padding:5px 0;">Verein</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+		<div class="container-fluid">
+			<div class="navbar-header"><a class="navbar-brand" href="#">FraKeKu e.V.</a><button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
+			<div
+				class="collapse navbar-collapse" id="navcol-2">
+				<ul class="nav navbar-nav" style="background-color:#f5df51;">
+					<li {% if request.endpoint == 'home' %} role="presentation"><a href="{{ url_for('home') }}">Aktuelles</a></li>
+					<li {% if request.endpoint == 'foerdern' %} role="presentation"><a href="{{ url_for('foerdern') }}">Mitglied werden</a></li>
+					<li {% if request.endpoint == 'aboutus' %} role="presentation"><a href="{{ url_for('aboutus') }}">Verein</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>

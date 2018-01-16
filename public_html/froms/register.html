@@ -1,0 +1,270 @@
+
+{##################}
+{# Register Form  #}
+{##################}	
+
+
+{% extends('layouts/main.html') %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div id="contentrow" class="row" style="margin:0; padding:5px 0;">
+
+
+	
+
+        <div class="col-md-8 col-md-offset-2">
+		
+		{# ALERT MESSAGES  #}
+		{% for field in form.errors %}
+			{% for error in form.errors[field] %}
+				<div class="alert alert-danger">
+					{{ field }}
+					<strong>Error!</strong> {{ error }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<!-- 1 / 4 -->
+		<div class="registerForm__footer" id="one">
+			{{ form.hidden_tag() }}
+			<h3> --- Seite noch im Aufbau ---</h3>
+			<br>
+			<h4>Angaben zur Person</h4>
+			
+			{% set i=1 %}
+                {% for subField in form.membertype %}
+                    <div class="form-check" style="display: inline;">
+                        {{ subField(class="form-check-input",required=True,**{"onclick":"showType("~loop.index~")"}) }}
+                        {{ subField.label(class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default") }}
+                    </div>
+				{% endfor %}
+			
+			
+			<div id="firma" style="left: 0; position: relative;">
+				<div>
+					<h5 id="natPer"><b>Natürliche Person</b></h5>
+					<h5 id="jurPer"><b>Juristische Person</b></h5>
+				</div>
+				<div class="form-group">
+				{{ form.company.label(class="control-label col-md-3 col-sm-3 col-xs-12") }}
+					<div class="col-md-6 col-sm-6 col-xs-12">	
+				{{ form.company(class="form-control",id="cName",placeholder="Apfel GmbH") }}
+					</div>
+				</div>
+			</div>
+				
+			<form class="form-horizontal form-label-left" method="POST" action="/register">
+						<div class="form-group"> 
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Art der Mitgliedschaft</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div id="membership_type" class="btn-group btn-group-justified" data-toggle="buttons">
+									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+										<input type="radio" name="membership_type" value="1"> &nbsp; Ordentliches Mitglied &nbsp;
+									</label>
+									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+										<input type="radio" name="membership_type" value="2"> &nbsp; F&ouml;rdermitglied &nbsp;
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="fName" class="control-label col-md-3 col-sm-3 col-xs-12">Vorname</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									{{ form.firstname(class="form-control",id="fName",placeholder="Peter",required=True) }}
+								</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="lName" class="control-label col-md-3 col-sm-3 col-xs-12">Nachname</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								{{ form.lastname(class="form-control",id="lName",placeholder="Schmidt",required=True) }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="bDay" class="control-label col-md-3 col-sm-3 col-xs-12">Geburtstag</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								{{ form.bday(class="form-control",id="bDay",placeholder="DD-MM-YY",type="date") }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="mail"  class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								{{ form.email(class="form-control",id="mail",placeholder="peter@schmidt.de",type="email",required=True) }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="sName" class="control-label col-md-3 col-sm-3 col-xs-12">Straße & Nr</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								{{ form.road(class="form-control",id="sName",placeholder="Schweizer Straße",required=True) }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">PLZ & Ort</label>
+							<div class="col-md-2 col-sm-2 col-xs-12">
+								{{ form.postcode(class="form-control",id="plz",placeholder="60598",type="number",required=True) }}
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12">
+								{{ form.town(class="form-control",id="city",placeholder="Frankfurt",required=True) }}
+							</div>
+						</div>
+						
+						{{ form.persontype(type="number",id="topVAl",value=0) }}
+						<br>
+						<button class="btn btn-success" onclick="showFirst('one','two')" type="button">Weiter</button>
+
+			</form>
+		</div>
+		
+		<!-- 2 / 4 -->
+		
+		<div>
+		    <div class="registerForm__header">
+                <h1 class="registerForm__text "><b>Page 2 of 4 - freiwillige Daten</b></h1>
+            </div>
+			
+			<div class="registerForm__footer" id="two">
+				<form class="form-horizontal form-label-left" method="post">
+
+							
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Telefonnummer</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						{{ form.phone(class="form-control",id="phoneNumber",placeholder="069 680000") }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Telefon</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						{{ form.mobile(class="form-control",id="phoneNumber__2",placeholder="0177 1234567") }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Profilbild</label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						{{ form.image_url(class="form-control",id="phoneNumber",placeholder="49-12345678901",type="url") }}
+					</div>
+				</div>
+
+				</form>
+			</div>
+		</div>
+			<!-- 3 / 4 -->
+			<h4>Bankverbindung</h4>
+			
+			<form class="form-horizontal form-label-left" method="post">
+				<div class="row">
+					<div class="col-md-12">
+					
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Kontoinhaber</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input class="form-control" type="text" name="firstname" required="" placeholder="Peter Schmidt" pattern="[a-Z]" autofocus="" inputmode="latin-name">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">		  
+								<p>IBAN entweder berechnen oder direkt eingeben.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Kontonummer</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input class="form-control" type="number" name="ktn" required="" placeholder="4040160100" pattern="[0-9]" autofocus="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Bankleitzahl</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input class="form-control" type="number" name="blz" required="" placeholder="50080000" pattern="[0-9]" autofocus="" >
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+							  <button type="submit" class="btn btn-success">IBAN und BIC berechnen</button>
+							</div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">IBAN</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input class="form-control iban" type="text" name="iban" required="" placeholder="DE12123423453456456789">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">BIC</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input class="form-control iban" type="text" name="bic" required="" placeholder="PBXXXXFF">
+							</div>
+						</div>
+						<div class="ln_solid"></div>
+						
+						
+						
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Monatlicher Beitrag</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div class="input-group">
+									<input class="form-control" type="number" name="monthlyfee" required="" value="9" pattern="[0-9]" autofocus="">
+									<span class="input-group-addon">.00 €</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"> 
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div id="membership_type" class="btn-group btn-group-justified" data-toggle="buttons">
+									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+										<input type="radio" name="membership_type" value="1"> &nbsp; 3 &nbsp;€
+									</label>
+									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+										<input type="radio" name="membership_type" value="2"> &nbsp; 6 &nbsp;€
+									</label>
+									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+										<input type="radio" name="membership_type" value="3"> &nbsp; 30 &nbsp;€
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">SEPA-Einwilligung</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div class="checkbox">
+									<label>
+									  <input type="checkbox" value=""> <span class="required">*</span>
+									</label>
+                          </div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable Text area</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+							  <textarea readonly="readonly" stype="font-size: 8px;" rows="5" class="resizeable-textarea form-control" placeholder="">Ich ermächtige den Frankfurter Kelterei Kultur e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut an, die vom Frankfurter Kelterei Kultur e.V. auf mein Konto gezogenen Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belastenden Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.&#10;&#10;Frankfurter Kelterei Kultur e.V. &#10;&#10;Gläubiger-Identifikationsnummer und Mandatsreferenz werden separat mitgeteilt.</textarea>
+							</div>
+						  </div>
+						
+					</div>
+				</div>
+			</form>
+
+			
+			
+			
+        </div>
+
+	</div>
+	
+	
+{% endblock %}

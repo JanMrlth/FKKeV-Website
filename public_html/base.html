@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
@@ -14,75 +14,45 @@
 </head>
 
 <body style="background-color:rgb(247,255,244);height:100%;">
-    <div class="container" style="background-color:#ffffff;padding:0;min-height:100%;">
-        <div class="page-header hidden-xs hidden-sm" style="background-color:rgba(255,255,255,0.81);height:60px;width:100%;padding:8px;margin:0;">
-            <h1 class="text-nowrap text-center" style="font-size:48px;margin:0;color:rgb(0,0,0);">Frankfurter Kelterei Kultur e.V.</h1>
-        </div>
-        <div style="background-color:#1fb0e3;">
-            <div class="hidden-xs">
-                <div class="row" style="background-color:#cdcccc;margin:0;">
-                    <div class="col-md-12 col-sm-12" style="padding:0;">
-                        <ul class="nav nav-pills nav-justified">
-                            <li {% if request.endpoint == 'home' %}><a href="{{ url_for('home') }}" style="padding:5px 0;">Aktuelles</a></li>
-                            <li class="disabled"><a href="#" style="padding:5px 0;">Wissen</a></li>
-                            <li {% if request.endpoint == 'foerdern' %}><a href="{{ url_for('foerdern') }}" style="padding:5px 50px;">Mitglied werden</a></li>
-                            <li class="disabled"><a href="#" style="padding:5px 0;">Bäume</a></li>
-                            <li {% if request.endpoint == 'aboutus' %}><a href="{{ url_for('aboutus') }}" style="padding:5px 0;">Verein</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar navbar-default hidden-sm hidden-md hidden-lg">
-                <div class="container-fluid">
-                    <div class="navbar-header"><a class="navbar-brand" href="#">FraKeKu e.V.</a><button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-                    <div
-                        class="collapse navbar-collapse" id="navcol-2">
-                        <ul class="nav navbar-nav" style="background-color:#f5df51;">
-                            <li {% if request.endpoint == 'home' %} role="presentation"><a href="{{ url_for('home') }}">Aktuelles</a></li>
-                            <li {% if request.endpoint == 'foerdern' %} role="presentation"><a href="{{ url_for('foerdern') }}">Mitglied werden</a></li>
-                            <li {% if request.endpoint == 'aboutus' %} role="presentation"><a href="{{ url_for('aboutus') }}">Verein</a></li>
-                        </ul>
-					</div>
-				</div>
-			</nav>
-		</div>
+	<div class="container" style="background-color:#ffffff;padding:0;min-height:100%;">
+ 	<!-- LOGO -->        
+	{% include 'includes/_logo.html'}
+		
+ 	<!-- NAVBAR -->        
+	{% include 'includes/_navbar.html'}
 	
 	<!-- NOTIFICATIONs from FLASK --> 
 	{# page-level feedback notices #}
 	
 	{% with messages = get_flashed_messages() %}
-			  {% if messages %}
-				{% for message in messages %}
-				  <div class="alert alert-warning fade in">
-					<a class="close" data-dismiss="alert">&times;</a>
-					{{ message }}
-				  </div>
-				{% endfor %}
-			  {% endif %}
-			{% endwith %}
+	  {% if messages %}
+		{% for message in messages %}
+		  <div class="alert alert-warning fade in">
+			<a class="close" data-dismiss="alert">&times;</a>
+			{{ message }}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
 	
 	
-	<!-- CONTENT wrapped in col in this row -->
-    <div class="row" style="margin:0;padding:5px 0;">
-			{% block content %}
-			{# main content area #}
-			{% endblock %}
-	</div>
+	<!-- CONTENT -->
+    <div class="row" style="margin:0;padding:5px 0;"></div>
+	{% block content %}
+	{# main content area #}
+	{% endblock %}
+
 	
 	
-	<!-- footer -->
-	<div class="row" id="footer" style="margin:0;padding:5px 0;"> 
-		{% block footer %}{% endblock %}
-	</div>
+	<!-- footer  -->
+	{% include 'includes/_footer.html'}
 	
 	
     </div><!-- /container -->
+	
 	<script src="assets/js/iban.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	
-	
-	
 </body>
 
 </html>
