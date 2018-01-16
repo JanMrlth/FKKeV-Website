@@ -14,8 +14,8 @@
 	
 </head>
 
-<body style="background-color:rgb(247,255,244);height:100%;">
-	<div class="container">
+<body>
+    <div class="container" id="pagewrapper">
  	<!-- LOGO -->        
 	{% include 'includes/_logo.html'}
 		
@@ -38,7 +38,6 @@
 	
 	
 	<!-- CONTENT -->
-    <div class="row" style="margin:0;padding:5px 0;"></div>
 	{% block content %}
 	{# main content area #}
 	{% endblock %}
@@ -48,10 +47,9 @@
 	<!-- footer  -->
 	{% include 'includes/_footer.html'}
 	
-	
     </div><!-- /container -->
-	
-	<script src="assets/js/iban.js"></script>
+
+    <script src="assets/js/iban.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
