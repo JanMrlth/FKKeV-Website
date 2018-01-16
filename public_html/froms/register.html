@@ -4,11 +4,9 @@
 {##################}	
 
 
-{% extends('layouts/main.html') %}
+{% extends('layouts/base.html') %}
 
-{% block title %}
-    Login
-{% endblock %}
+{% block title %} Anmeldung {% endblock %}
 
 
 
@@ -31,8 +29,9 @@
 				</div>
 			{% endfor %}
 		{% endfor %}
-
-		<!-- 1 / 4 -->
+		
+		
+		{# FROM 1 / 4 #}
 		<div class="registerForm__footer" id="one">
 			{{ form.hidden_tag() }}
 			<h3> --- Seite noch im Aufbau ---</h3>
